@@ -1,10 +1,10 @@
 import '@mantine/core/styles.css';
 import React from 'react';
-import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+import { MantineProvider, ColorSchemeScript, Container } from '@mantine/core';
 import { theme } from '../theme';
 
 export const metadata = {
-  title: 'Mantine Next.js template',
+  title: 'New York Times API App',
   description: 'I am using Mantine with Next.js!',
 };
 
@@ -20,7 +20,9 @@ export default function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider theme={theme}>
+          <Container size="xxl">{children}</Container>
+        </MantineProvider>
       </body>
     </html>
   );
