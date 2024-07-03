@@ -1,10 +1,14 @@
-import { Box } from '@mantine/core';
+import { Group, Container } from '@mantine/core';
+import { Welcome } from '../Welcome/Welcome';
 import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
 
 export default function Header() {
   return (
-    <Box mb="xxl">
-      <ColorSchemeToggle />
-    </Box>
+    <Container mb={50} mt={50}>
+      <Group justify="space-between">
+        <Welcome />
+        <ColorSchemeToggle />
+      </Group>
+    </Container>
   );
 }
