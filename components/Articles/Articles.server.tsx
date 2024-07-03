@@ -7,7 +7,7 @@ export interface Article {
   headline: { main: string };
   snippet: string;
   multimedia: Multimedia[];
-  url: string;
+  web_url: string;
 }
 
 export async function fetchArticles(query: string): Promise<Article[]> {
@@ -22,6 +22,7 @@ export async function fetchArticles(query: string): Promise<Article[]> {
     }
 
     const data = await response.json();
+    console.log(data.response.docs);
     return data.response.docs;
   } catch (error) {
     console.error('Failed to fetch articles:', error);
