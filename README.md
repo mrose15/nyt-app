@@ -9,6 +9,7 @@
 - Search feature repopulates articles based on search input value
 - Added default image in case no article image exists
 - Implemented the very popular light/dark modes
+- Tested for accessibility compliance according to WCAG best practices and ensured standards like color contrasts and keyboard navigation
 
 # Things to Address
 
