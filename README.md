@@ -8,11 +8,12 @@
 - For interactivity with each article, I added a 'View Snippet" button to toggle the snippet text
 - Search feature repopulates articles based on search input value
 - Added default image in case no article image exists
+- Implemented the very popular light/dark modes
 
 # Things to Address
 
 - Error handling when no results needs to be adjusted. Once the user submits a query that has no results and then submits a new query that does have results, a message returns to the user that the new query does not have results right before loading the new results
-- Load time of images/articles
+- Load time of images/articles take awhile. This could probably be resolved by adding the functionality and Search component import in page.tsx to ArticleList.
 
 # Mantine Next.js template
 
