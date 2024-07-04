@@ -7,9 +7,16 @@ import classes from './ArticleList.module.css';
 interface ArticlesProps {
   query: string;
   onNoResults: (isEmpty: boolean) => void;
+  articles: {
+    _id: string;
+    headline: { main: string };
+    multimedia: { url: string }[];
+    snippet: string;
+    web_url: string;
+  }[];
 }
 
-const ArticleList: React.FC<ArticlesProps> = ({ query, onNoResults }) => {
+const ArticleList: React.FC<ArticlesProps> = ({ query, onNoResults, articles }) => {
   const NYT_DOMAIN = 'https://www.nytimes.com';
   const { articleList, openArticleId, toggle } = useArticles(query);
 

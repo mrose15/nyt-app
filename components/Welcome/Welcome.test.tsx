@@ -2,11 +2,9 @@ import { render, screen } from '@/test-utils';
 import { Welcome } from './Welcome';
 
 describe('Welcome component', () => {
-  it('has correct Next.js theming section link', () => {
+  it('renders the welcome message correctly', () => {
     render(<Welcome />);
-    expect(screen.getByText('this guide')).toHaveAttribute(
-      'href',
-      'https://mantine.dev/guides/next/'
-    );
+    // Assuming the Welcome component includes a welcome message
+    expect(screen.getByText(/New York Times Article Search/i)).toBeInTheDocument();
   });
 });

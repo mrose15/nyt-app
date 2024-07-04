@@ -23,7 +23,7 @@ const HomePage = () => {
     <>
       <Header />
       <SearchComponent onSearch={handleSearch} />
-      <ArticleList query={query} onNoResults={handleNoResults} />
+      <ArticleList query={query} onNoResults={handleNoResults} articles={[]} />
       {noResults && (
         <div>No results found for &quot;{query}&quot;. Please try another search.</div>
       )}{' '}
