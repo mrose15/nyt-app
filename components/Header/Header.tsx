@@ -1,6 +1,7 @@
 import { Group, Container } from '@mantine/core';
 import { Welcome } from '../Welcome/Welcome';
 import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
+import SearchComponent from '../Search/Search';
 
 export default function Header() {
   return (
@@ -10,6 +11,7 @@ export default function Header() {
       </Group>
       <Group justify="space-between">
         <Welcome />
+        <SearchComponent />
       </Group>
     </Container>
   );
