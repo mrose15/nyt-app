@@ -1,29 +1,34 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
 import { Card, SimpleGrid, Image, Button, Group, Text, Collapse, Flex } from '@mantine/core';
-import { Article, fetchArticles } from './Articles.server';
+import { useArticles } from './useArticles';
 import classes from './ArticleList.module.css';
 
 interface ArticlesProps {
   query: string;
+  onNoResults: (isEmpty: boolean) => void;
 }
 
-const ArticleList: React.FC<ArticlesProps> = ({ query }) => {
+const ArticleList: React.FC<ArticlesProps> = ({ query, onNoResults }) => {
   const NYT_DOMAIN = 'https://www.nytimes.com';
-  const [articleList, setArticleList] = useState<Article[]>([]);
-  const [openArticleId, setOpenArticleId] = useState<string | null>(null);
+  const { articleList, openArticleId, toggle } = useArticles(query);
 
-  const toggle = (id: string) => {
-    setOpenArticleId(openArticleId === id ? null : id);
-  };
+  const defaultImageURL = '/images/logo.png';
 
-  useEffect(() => {
-    fetchArticles(query).then(setArticleList);
-  }, [query]); //only re-run the effect if the query changes
+  // Invoke onNoResults based on the articleList length
+  if (articleList.length === 0) {
+    onNoResults(true);
+  } else {
+    onNoResults(false);
+  }
 
   return (
-    <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="xl" verticalSpacing="xl">
+    <SimpleGrid
+      cols={{ base: 1, sm: 2 }}
+      spacing="xl"
+      verticalSpacing="xl"
+      className={classes.articles}
+    >
       {articleList.length > 0 ? (
         articleList.map((article) => (
           <Card
@@ -37,7 +42,11 @@ const ArticleList: React.FC<ArticlesProps> = ({ query }) => {
             <Card.Section>
               <Image
                 h={150}
-                src={`${NYT_DOMAIN}/${article.multimedia[0].url}`}
+                src={
+                  article.multimedia && article.multimedia[0]
+                    ? `${NYT_DOMAIN}/${article.multimedia[0].url}`
+                    : `${defaultImageURL}`
+                }
                 alt={article.headline.main}
               />
             </Card.Section>
