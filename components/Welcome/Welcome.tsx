@@ -9,7 +9,7 @@ export function Welcome() {
           inherit
           variant="gradient"
           component="span"
-          gradient={{ from: '#9fccfa', to: '#696eff' }}
+          gradient={{ from: 'blue', to: 'cyan', deg: 90 }}
         >
           New York Times Article Search
         </Text>
