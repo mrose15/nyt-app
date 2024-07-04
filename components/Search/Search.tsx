@@ -1,32 +1,41 @@
 'use client';
 
 import { useState } from 'react';
-import { Autocomplete, rem } from '@mantine/core';
+import { Input, rem } from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
 
-function SearchComponent() {
+interface SearchProps {
+  onSearch: (value: string) => void;
+}
+
+const SearchComponent: React.FC<SearchProps> = ({ onSearch }) => {
   const icon = <IconSearch style={{ width: rem(16), height: rem(16) }} />;
   const [searchValue, setSearchValue] = useState('');
 
-  const data = [
-    { value: 'Article 1', label: 'Article 1' },
-    { value: 'Article 2', label: 'Article 2' },
-  ];
+  // Change event handler to correctly update state and call onSearch prop
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value;
+    setSearchValue(newValue);
+  };
 
-  const handleSelect = (value: string) => {
-    console.log('Selected:', value);
+  // Add onKeyDown event to handle search on pressing 'Enter'
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      onSearch(searchValue);
+    }
   };
 
   return (
-    <Autocomplete
-      label="Search New York Times articles"
-      leftSection={icon}
-      data={data}
-      value={searchValue}
-      onChange={setSearchValue}
-      onOptionSubmit={handleSelect}
-    />
+    <>
+      <Input.Label>Search New York Times articles</Input.Label>
+      <Input
+        leftSection={icon}
+        value={searchValue}
+        onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
+      />
+    </>
   );
-}
+};
 
 export default SearchComponent;
