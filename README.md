@@ -2,10 +2,17 @@
 
 - Used the [Mantine + Next.js template](https://github.com/mantinedev/next-app-template) for this project and removed the Storybook references. I chose to do this taking into consideration this is a small technical assessment. If this were a larger project meant for production, I would have added the dependencies as needed, allowing for greater control over project structure and configuration. For a larger project with more dependencies, I would document why each dependency is used in the README.
 - Kept the components outside of /app to let other engineers know the app directory includes only page components. If there's too many folders in /app, then it will be hard for other engineers to know what routes actually exist inside the application. This separation keeps the codebase cleaner
-- Used environment variables to secure the API key
+- Used an environment variable to secure the API key
 - Used a server component for the API fetch for better performance
 - Each component has its own folder to keep each components organized
 - For interactivity with each article, I added a 'View Snippet" button to toggle the snippet text
+- Search feature repopulates articles based on search input value
+- Added default image in case no article image exists
+
+# Things to Address
+
+- Error handling when no results needs to be adjusted. Once the user submits a query that has no results and then submits a new query that does have results, a message returns to the user that the new query does not have results right before loading the new results
+- Load time of images/articles
 
 # Mantine Next.js template
 
