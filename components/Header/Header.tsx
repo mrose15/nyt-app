@@ -5,9 +5,11 @@ import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
 export default function Header() {
   return (
     <Container mb={50} mt={50}>
+      <Group justify="flex-end" mb={20}>
+        <ColorSchemeToggle />
+      </Group>
       <Group justify="space-between">
         <Welcome />
-        <ColorSchemeToggle />
       </Group>
     </Container>
   );
