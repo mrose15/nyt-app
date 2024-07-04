@@ -5,6 +5,7 @@
 - Used environment variables to secure the API key
 - Used a server component for the API fetch for better performance
 - Each component has its own folder to keep each components organized
+- For interactivity with each article, I added a 'View Snippet" button to toggle the snippet text
 
 # Mantine Next.js template
 
