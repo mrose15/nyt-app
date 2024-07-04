@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useDisclosure } from '@mantine/hooks';
-import { Card, SimpleGrid, Image, Button, Group, Accordion, Text, Collapse } from '@mantine/core';
+import { Card, SimpleGrid, Image, Button, Group, Text, Collapse, Flex } from '@mantine/core';
 import { Article, fetchArticles } from './Articles.server';
 import classes from './ArticleList.module.css';
 
@@ -42,29 +41,31 @@ const ArticleList: React.FC<ArticlesProps> = ({ query }) => {
                 alt={article.headline.main}
               />
             </Card.Section>
-            <h2 className={classes.articleTitle}>{article.headline.main}</h2>
-            <Collapse
-              mb={20}
-              in={openArticleId === article._id}
-              transitionDuration={300}
-              transitionTimingFunction="linear"
-            >
-              <Text size="md">{article.snippet}</Text>
-            </Collapse>
-            <Group justify="space-between">
-              <Button variant="outline" color="#A77CE8" onClick={() => toggle(article._id)}>
-                {`${openArticleId === article._id ? 'Close' : 'View'} Snippet`}
-              </Button>
-              <Button
-                variant="gradient"
-                gradient={{ from: '#A77CE8', to: '#627af7', deg: 45 }}
-                component="a"
-                target="_blank"
-                href={article.web_url}
+            <Flex direction="column" justify="space-between" mih={150}>
+              <h2 className={classes.articleTitle}>{article.headline.main}</h2>
+              <Collapse
+                mb={20}
+                in={openArticleId === article._id}
+                transitionDuration={300}
+                transitionTimingFunction="linear"
               >
-                Read More
-              </Button>
-            </Group>
+                <Text size="md">{article.snippet}</Text>
+              </Collapse>
+              <Group justify="space-between">
+                <Button variant="outline" color="#A77CE8" onClick={() => toggle(article._id)}>
+                  {`${openArticleId === article._id ? 'Close' : 'View'} Snippet`}
+                </Button>
+                <Button
+                  variant="gradient"
+                  gradient={{ from: '#A77CE8', to: '#627af7', deg: 45 }}
+                  component="a"
+                  target="_blank"
+                  href={article.web_url}
+                >
+                  Read More
+                </Button>
+              </Group>
+            </Flex>
           </Card>
         ))
       ) : (
